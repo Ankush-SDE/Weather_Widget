@@ -3,8 +3,27 @@ import Button from '@mui/material/Button';
 import "./SearchBox.css"
 import { useState } from 'react';
 export default function  SearchBox(){
-  let [city,setCity] =useState("");
+let [city,setCity] =useState("");
 
+  const API_URL="https://api.openweathermap.org/data/2.5/weather";
+  const API_KEY ="26023e84a9340bf4c0650d492f94e98e";
+
+  let getWheatherInfo  = async ()=>{
+ let response=   await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=matric`);
+let jsonResponse = await response.json();
+console.log(jsonResponse);
+
+let result = {
+  temp: jsonResponse.main.temp,
+  tempMin: jsonResponse.main.temp_min,
+  tempMax: jsonResponse.main.temp_max,
+  humidity: jsonResponse.main.humidity,
+  feelsLike: jsonResponse.main.feels_Like,
+  weather: jsonResponse.weather[0].description,
+};
+console.log(result);
+  };
+  
   let handleChange =(evt)=>{
     setCity(evt.target.value);
   };
@@ -12,7 +31,8 @@ export default function  SearchBox(){
     evt.preventDefault();
     console.log(city);
     setCity("");
-  }
+    getWheatherInfo();
+  };
 
   return(
     <div>
