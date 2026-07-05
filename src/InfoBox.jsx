@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import "./InfoBox.css"
 export default function InfoBox(){
   const INIT_URL ="https://images.unsplash.com/photo-1722858343990-1604f540c15d?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZHVzdHklMjB3ZWF0aGVyfGVufDB8fDB8fHww";
   let info ={
@@ -20,7 +20,7 @@ export default function InfoBox(){
   return(
     <div className="InfoBox">
       <h1>WeatherInfo -{info.wearther}</h1>
-      
+      <div className="cardcontainer">
        <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
@@ -42,6 +42,7 @@ export default function InfoBox(){
       </CardContent>
       
     </Card>
+    </div>
     </div>
 
   )
